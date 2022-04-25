@@ -1,0 +1,14 @@
+<div>
+  <form [formGroup]="artistForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter a musical artist</mat-label>
+      <input matInput placeholder="Drake" formControlName="artist" required>
+      <mat-error *ngIf="artistForm.get('artist')?.invalid && artistForm.get('artist')?.touched">The artist field is
+        empty
+      </mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit"
+            [disabled]="artistForm.get('artist')?.invalid">SUBMIT
+    </button>
+  </form>
+</div>

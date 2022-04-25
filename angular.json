@@ -27,6 +27,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -71,7 +72,7 @@
               "browserTarget": "Music-Project:build:production"
             },
             "development": {
-              "browserTarget": "Music-Project:build:development"
+              "browserTarget": "Music-Project:build:development",
             }
           },
           "defaultConfiguration": "development"
@@ -94,6 +95,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -101,6 +103,5 @@
         }
       }
     }
-  },
-  "defaultProject": "Music-Project"
+  }
 }
