@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 
 import {HttpClient} from '@angular/common/http';
 
-import {Subject} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 
 import {ArtistResults} from '../interfaces/artist-results.interface';
 
@@ -16,7 +16,7 @@ export class GetITunesApiService {
   constructor(private http: HttpClient) {
   }
 
-  getItunesApi(artist: string) {
+  getItunesApi(artist: string): Observable<ArtistResults> {
     const finalName = artist
       .trim()
       .replace(' ', '+')

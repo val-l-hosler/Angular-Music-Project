@@ -1,8 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {ArtistResults} from "../interfaces/artist-results.interface";
-import {take} from "rxjs";
-import {GetITunesApiService} from "../services/get-iTunes-api.service";
+
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+
+import {take} from 'rxjs';
+
+import {ArtistResults} from '../interfaces/artist-results.interface';
+
+import {GetITunesApiService} from '../services/get-iTunes-api.service';
 
 @Component({
   selector: 'app-artist-search',
@@ -20,7 +24,10 @@ export class ArtistSearchComponent implements OnInit {
   ngOnInit(): void {
     this.getItunesApiService.getResults()
       .pipe(take(1))
-      .subscribe(results => console.log(results));
+      .subscribe(results => {
+        console.log(results);
+        console.log(results.results);
+      });
   }
 
   onSubmit() {
