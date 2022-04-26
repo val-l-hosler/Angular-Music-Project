@@ -1,0 +1,13 @@
+.spread-items {
+  display: flex;
+  justify-content: space-between;
+}
+
+.custom.mat-card-title {
+  margin-bottom: 16px;
+}
+
+.custom.mat-list.mat-list-base {
+  padding: 0;
+  width: 75%;
+}

@@ -1,1 +1,14 @@
-<p>result-list works!</p>
+<div *ngIf="resultUIInfo && resultUIInfo.length > 0; else noResult">
+  <h2>Results for {{searchTerm}}</h2>
+  <app-result *ngFor="let result of resultUIInfo; let i = index;" [artistName]="result.artistName"
+              [artworkUrl]="result.artworkUrl" [collectionName]="result.collectionName" [index]="i + 1"></app-result>
+</div>
+
+<ng-template #noResult>
+  <div *ngIf="loading; else notLoading">
+    <app-loading-spinner class="flex"></app-loading-spinner>
+  </div>
+  <ng-template #notLoading>
+    <h2>There are no search search results for {{searchTerm}}.</h2>
+  </ng-template>
+</ng-template>

@@ -1,4 +1,4 @@
 <nav mat-tab-nav-bar appBottomMargin>
-  <a mat-tab-link routerLink="" routerLinkActive="active"> Home </a>
-  <a mat-tab-link routerLink="results" routerLinkActive="active"> Results </a>
+  <a mat-tab-link routerLink="/" routerLinkActive="active"> Home </a>
+  <a mat-tab-link routerLink="results" routerLinkActive="active" [disabled]="resultsActive"> Results </a>
 </nav>

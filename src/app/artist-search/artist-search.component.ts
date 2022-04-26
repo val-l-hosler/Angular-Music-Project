@@ -1,6 +1,7 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
 
 import {ArtistResults} from '../interfaces/artist-results.interface';
 
@@ -17,20 +18,17 @@ export class ArtistSearchComponent {
     artist: new FormControl('', [Validators.required])
   });
 
-  constructor(private getItunesApiService: GetITunesApiService) {
+  constructor(private getItunesApiService: GetITunesApiService, private router: Router) {
   }
 
   onSubmit() {
     const artistName = this.artistForm.value.artist;
 
     this.getItunesApiService.getItunesApi(artistName)
-      .subscribe({
-        next: (results: ArtistResults) => this.getItunesApiService.setResults(results),
-        error: (err: Error) => {
-          this.getItunesApiService.errorMsg = err.message;
-        }
-      });
+      .subscribe((results: ArtistResults) => this.getItunesApiService.setResults(results));
 
     this.artistForm.reset();
+
+    this.router.navigate(['/results']);
   }
 }

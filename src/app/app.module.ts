@@ -1,24 +1,28 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
-import {AppComponent} from '../app.component';
+import {AppComponent} from './app.component';
 
 import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
 
-import {ArtistSearchComponent} from '../artist-search/artist-search.component';
+import {ArtistSearchComponent} from './artist-search/artist-search.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatCardModule} from '@angular/material/card';
+import {MatListModule} from '@angular/material/list';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
-import {ResultListComponent} from '../result-list/result-list.component';
-import {ResultComponent} from '../result-list/result/result.component';
-import {RoutingModule} from './routing.module';
-import {NavComponent} from '../nav/nav.component';
-import {BottomMarginDirective} from '../directives/bottom-margin.directive';
+import {ResultListComponent} from './result-list/result-list.component';
+import {ResultComponent} from './result-list/result/result.component';
+import {RoutingModule} from './routing/routing.module';
+import {NavComponent} from './nav/nav.component';
+import {BottomMarginDirective} from './directives/bottom-margin.directive';
+import {LoadingSpinnerComponent} from './loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,8 @@ import {BottomMarginDirective} from '../directives/bottom-margin.directive';
     ResultListComponent,
     ResultComponent,
     NavComponent,
-    BottomMarginDirective
+    BottomMarginDirective,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +43,10 @@ import {BottomMarginDirective} from '../directives/bottom-margin.directive';
     MatInputModule,
     MatButtonModule,
     RoutingModule,
-    MatTabsModule
+    MatTabsModule,
+    MatCardModule,
+    MatListModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

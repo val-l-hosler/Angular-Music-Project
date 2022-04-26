@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 
 import {HttpClient} from '@angular/common/http';
 
-import {BehaviorSubject, Observable} from 'rxjs';
+import {BehaviorSubject, Observable, Subject} from 'rxjs';
 
 import {ArtistResults} from '../interfaces/artist-results.interface';
 
@@ -10,13 +10,15 @@ import {ArtistResults} from '../interfaces/artist-results.interface';
   providedIn: 'root'
 })
 export class GetITunesApiService {
-  private results = new BehaviorSubject<ArtistResults | undefined>(undefined);
-  errorMsg = '';
+  results = new Subject<ArtistResults>();
+  searchTerm = new BehaviorSubject<string>('');
 
   constructor(private http: HttpClient) {
   }
 
   getItunesApi(artist: string): Observable<ArtistResults> {
+    this.searchTerm.next(artist);
+
     const finalName = artist
       .trim()
       .replace(' ', '+')

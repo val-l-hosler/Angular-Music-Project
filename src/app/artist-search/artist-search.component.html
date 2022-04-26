@@ -3,8 +3,10 @@
     <mat-form-field class="my-form-field" appBottomMargin appearance="fill">
       <mat-label>Enter a musical artist</mat-label>
       <input matInput formControlName="artist" required>
-      <mat-error *ngIf="artistForm.get('artist')?.invalid && artistForm.get('artist')?.touched">The artist field is
-        empty
+      <mat-error
+        *ngIf="artistForm.get('artist')?.invalid &&
+        artistForm.get('artist')?.touched">
+        The artist field is empty
       </mat-error>
     </mat-form-field>
     <button mat-raised-button color="primary" type="submit"

@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
+
+import {GetITunesApiService} from '../services/get-iTunes-api.service';
 
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css']
 })
-export class NavComponent implements OnInit {
+export class NavComponent {
+  resultsActive = true;
 
-  constructor() { }
+  constructor(private getItunesApiService: GetITunesApiService) {
+    const term = this.getItunesApiService.searchTerm.getValue();
 
-  ngOnInit(): void {
+    (term !== '') ? this.resultsActive = false : null;
   }
-
 }

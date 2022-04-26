@@ -1,1 +1,10 @@
-<p>result works!</p>
+<mat-card appBottomMargin>
+  <mat-card-title class="custom">Result {{index}}</mat-card-title>
+  <div class="spread-items">
+    <img src="{{artworkUrl}}" alt="{{collectionName}}">
+    <mat-list class="custom">
+      <mat-list-item> Artist name: {{artistName}} </mat-list-item>
+      <mat-list-item> Collection name: {{collectionName}} </mat-list-item>
+    </mat-list>
+  </div>
+</mat-card>
