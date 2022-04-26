@@ -1,8 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-
-import {take} from 'rxjs';
 
 import {ArtistResults} from '../interfaces/artist-results.interface';
 
@@ -11,23 +9,15 @@ import {GetITunesApiService} from '../services/get-iTunes-api.service';
 @Component({
   selector: 'app-artist-search',
   templateUrl: './artist-search.component.html',
-  styleUrls: ['./artist-search.component.css']
+  styleUrls: ['./artist-search.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
-export class ArtistSearchComponent implements OnInit {
+export class ArtistSearchComponent {
   artistForm = new FormGroup({
     artist: new FormControl('', [Validators.required])
   });
 
   constructor(private getItunesApiService: GetITunesApiService) {
-  }
-
-  ngOnInit(): void {
-    this.getItunesApiService.getResults()
-      .pipe(take(1))
-      .subscribe(results => {
-        console.log(results);
-        console.log(results.results);
-      });
   }
 
   onSubmit() {

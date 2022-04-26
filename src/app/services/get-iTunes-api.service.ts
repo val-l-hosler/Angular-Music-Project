@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 
 import {HttpClient} from '@angular/common/http';
 
-import {Observable, Subject} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 
 import {ArtistResults} from '../interfaces/artist-results.interface';
 
@@ -10,7 +10,7 @@ import {ArtistResults} from '../interfaces/artist-results.interface';
   providedIn: 'root'
 })
 export class GetITunesApiService {
-  private results = new Subject<ArtistResults>();
+  private results = new BehaviorSubject<ArtistResults | undefined>(undefined);
   errorMsg = '';
 
   constructor(private http: HttpClient) {
