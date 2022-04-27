@@ -4,9 +4,7 @@ import {Directive, ElementRef} from '@angular/core';
   selector: '[appBottomMargin]'
 })
 export class BottomMarginDirective {
-
   constructor(private el: ElementRef) {
     this.el.nativeElement.style.marginBottom = '2em';
   }
-
 }
