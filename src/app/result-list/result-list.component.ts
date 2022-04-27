@@ -31,12 +31,15 @@ export class ResultListComponent implements OnInit, OnDestroy {
     this.searchTerm = this.getItunesApiService.searchTerm.getValue();
 
     this.resultsSub = this.getItunesApiService.results.subscribe(searchResults => {
-      const {results} = searchResults;
 
-      this.resultUIInfo = results.map(result => {
-        const {artistName, artworkUrl100, collectionName} = result;
-        return {artistName: artistName, artworkUrl: artworkUrl100, collectionName: collectionName};
-      });
+      if ('results' in searchResults) {
+        const {results} = searchResults;
+
+        this.resultUIInfo = results.map(result => {
+          const {artistName, artworkUrl100, collectionName} = result;
+          return {artistName: artistName, artworkUrl: artworkUrl100, collectionName: collectionName};
+        });
+      }
 
       this.loading = false;
     });

@@ -29,7 +29,10 @@ export class SearchComponent implements OnInit {
     const searchTerm = this.searchForm.value.searchTerm;
 
     this.getItunesApiService.getItunesApi(searchTerm)
-      .subscribe((results: SearchResultsInterface) => this.getItunesApiService.setResults(results));
+      .subscribe({
+        next: (results: SearchResultsInterface) => this.getItunesApiService.setResults(results),
+        error: () => this.getItunesApiService.setResults({} as SearchResultsInterface)
+      });
 
     this.searchForm.reset();
 
