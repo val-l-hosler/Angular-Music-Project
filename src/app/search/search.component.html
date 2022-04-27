@@ -1,0 +1,16 @@
+<div id="search-form">
+  <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="my-form-field" appBottomMargin appearance="fill">
+      <mat-label>Enter a search term</mat-label>
+      <input matInput formControlName="searchTerm" required>
+      <mat-error
+        *ngIf="searchForm.get('searchTerm')?.invalid &&
+        searchForm.get('searchTerm')?.touched">
+        The search field is empty
+      </mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit"
+            [disabled]="searchForm.get('searchTerm')?.invalid">SUBMIT
+    </button>
+  </form>
+</div>

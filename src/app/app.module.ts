@@ -6,7 +6,7 @@ import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
 
-import {ArtistSearchComponent} from './artist-search/artist-search.component';
+import {SearchComponent} from './search/search.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -27,7 +27,7 @@ import {LoadingSpinnerComponent} from './loading-spinner/loading-spinner.compone
 @NgModule({
   declarations: [
     AppComponent,
-    ArtistSearchComponent,
+    SearchComponent,
     ResultListComponent,
     ResultComponent,
     NavComponent,

@@ -1,4 +1,4 @@
-export interface ArtistResults {
+export interface SearchResultsInterface {
   resultCount: number,
   results: {
     wrapperType: string,

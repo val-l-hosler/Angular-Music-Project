@@ -4,19 +4,19 @@ import {HttpClient} from '@angular/common/http';
 
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 
-import {ArtistResults} from '../interfaces/artist-results.interface';
+import {SearchResultsInterface} from '../interfaces/search-results.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GetITunesApiService {
-  results = new Subject<ArtistResults>();
+  results = new Subject<SearchResultsInterface>();
   searchTerm = new BehaviorSubject<string>('');
 
   constructor(private http: HttpClient) {
   }
 
-  getItunesApi(artist: string): Observable<ArtistResults> {
+  getItunesApi(artist: string): Observable<SearchResultsInterface> {
     this.searchTerm.next(artist);
 
     const finalName = artist
@@ -26,14 +26,14 @@ export class GetITunesApiService {
 
     const artistUrl = `https://itunes.apple.com/search?term=${finalName}`;
 
-    return this.http.get<ArtistResults>(artistUrl);
+    return this.http.get<SearchResultsInterface>(artistUrl);
   }
 
   getResults() {
     return this.results;
   }
 
-  setResults(results: ArtistResults) {
+  setResults(results: SearchResultsInterface) {
     this.results.next(results);
   }
 }
