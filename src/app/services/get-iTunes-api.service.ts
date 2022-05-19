@@ -29,10 +29,6 @@ export class GetITunesApiService {
     return this.http.get<SearchResultsInterface>(artistUrl);
   }
 
-  getResults() {
-    return this.results;
-  }
-
   setResults(results: SearchResultsInterface) {
     this.results.next(results);
   }

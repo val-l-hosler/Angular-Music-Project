@@ -1,6 +1,6 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
-import {Subscription} from 'rxjs';
+import {map, Observable} from 'rxjs';
 
 import {GetITunesApiService} from '../services/get-iTunes-api.service';
 
@@ -9,18 +9,16 @@ import {GetITunesApiService} from '../services/get-iTunes-api.service';
   templateUrl: './result-list.component.html',
   styleUrls: ['./result-list.component.css']
 })
-export class ResultListComponent implements OnInit, OnDestroy {
-  resultUIInfo?: {
-    artistName: string,
-    artworkUrl: string,
-    collectionName: string
-  }[];
-
+export class ResultListComponent implements OnInit {
   searchTerm = '';
 
   loading = false;
 
-  resultsSub?: Subscription;
+  resultsUIInfo?: Observable<{
+    artistName: string,
+    artworkUrl: string,
+    collectionName: string
+  }[] | null>;
 
   constructor(private getItunesApiService: GetITunesApiService) {
   }
@@ -28,24 +26,22 @@ export class ResultListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.loading = true;
 
-    this.searchTerm = this.getItunesApiService.searchTerm.getValue();
+    this.resultsUIInfo = this.getItunesApiService.results.pipe(map(searchResults => {
+        if ('results' in searchResults) {
+          const {results} = searchResults;
 
-    this.resultsSub = this.getItunesApiService.results.subscribe(searchResults => {
+          this.loading = false;
 
-      if ('results' in searchResults) {
-        const {results} = searchResults;
+          return results.map(result => {
+            const {artistName, artworkUrl100, collectionName} = result;
+            return {artistName: artistName, artworkUrl: artworkUrl100, collectionName: collectionName};
+          });
+        }
 
-        this.resultUIInfo = results.map(result => {
-          const {artistName, artworkUrl100, collectionName} = result;
-          return {artistName: artistName, artworkUrl: artworkUrl100, collectionName: collectionName};
-        });
+        return null;
       }
+    ))
 
-      this.loading = false;
-    });
-  }
-
-  ngOnDestroy() {
-    this.resultsSub?.unsubscribe();
+    this.searchTerm = this.getItunesApiService.searchTerm.getValue();
   }
 }
