@@ -1,7 +1,9 @@
-<div *ngIf="resultUIInfo && resultUIInfo.length > 0; else noResult">
-  <h2>Results for {{searchTerm}}</h2>
-  <app-result *ngFor="let result of resultUIInfo; let i = index;" [artistName]="result.artistName"
-              [artworkUrl]="result.artworkUrl" [collectionName]="result.collectionName" [index]="i + 1"></app-result>
+<div *ngIf="resultsUIInfo | async as results">
+  <div *ngIf="results.length > 0; else noResult">
+    <h2>Results for {{searchTerm}}</h2>
+    <app-result *ngFor="let result of results; let i = index;" [artistName]="result.artistName"
+                [artworkUrl]="result.artworkUrl" [collectionName]="result.collectionName" [index]="i + 1"></app-result>
+  </div>
 </div>
 
 <ng-template #noResult>
