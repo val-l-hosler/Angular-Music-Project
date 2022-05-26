@@ -9,3 +9,4 @@ I created a small app that sends an HTTP Get request to the iTunes Music Store A
 2. RxJS
 3. Angular material components
 4. TypeScript
+5. Sass (SCSS)
