@@ -1,4 +1,4 @@
-.center-spinner{
+.center-spinner {
   display: flex;
   justify-content: center;
 }
@@ -23,8 +23,10 @@
 }
 
 @media only screen and (max-width: 1200px) and (min-width: 651px) {
-  .cols {
-    flex: 0 calc(50% - 2rem);
-    margin: 1rem;
+  .cols-container {
+    .cols {
+      flex: 0 calc(50% - 2rem);
+      margin: 1rem;
+    }
   }
 }
