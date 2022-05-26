@@ -1,10 +1,22 @@
 <mat-card appBottomMargin>
   <mat-card-title class="custom">Result {{index}}</mat-card-title>
   <div class="spread-items">
-    <img src="{{artworkUrl}}" alt="{{collectionName}}">
+    <img *ngIf="artworkUrl; else noArtwork" src="{{artworkUrl}}"
+         [alt]="artistName || collectionName || index + ' search result'">
+    <ng-template #noArtwork>
+      <mat-icon [style.width]="'4rem'">broken_image</mat-icon>
+    </ng-template>
+
     <mat-list class="custom">
-      <mat-list-item> Artist name: {{artistName}} </mat-list-item>
-      <mat-list-item> Collection name: {{collectionName}} </mat-list-item>
+      <mat-list-item *ngIf="artistName; else noArtist"> {{artistName}} </mat-list-item>
+      <ng-template #noArtist>
+        <mat-list-item> No artist name</mat-list-item>
+      </ng-template>
+
+      <mat-list-item *ngIf="collectionName; else noCollection"> {{collectionName}} </mat-list-item>
+      <ng-template #noCollection>
+        <mat-list-item> No collection name</mat-list-item>
+      </ng-template>
     </mat-list>
   </div>
 </mat-card>

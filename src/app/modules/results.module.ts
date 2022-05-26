@@ -12,6 +12,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import {DirectivesModule} from './directives.module';
+import {MatIconModule} from "@angular/material/icon";
 
 const routes: Routes = [
   {path: '', component: ResultListComponent, canActivate: [ResultsGuard]}
@@ -23,14 +24,15 @@ const routes: Routes = [
     LoadingSpinnerComponent,
     ResultListComponent
   ],
-  imports: [
-    RouterModule.forChild(routes),
-    CommonModule,
-    MatCardModule,
-    MatListModule,
-    MatProgressSpinnerModule,
-    DirectivesModule
-  ],
+    imports: [
+        RouterModule.forChild(routes),
+        CommonModule,
+        MatCardModule,
+        MatListModule,
+        MatProgressSpinnerModule,
+        DirectivesModule,
+        MatIconModule
+    ],
   exports: [
     RouterModule
   ]

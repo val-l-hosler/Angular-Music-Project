@@ -1,5 +1,17 @@
 main {
-  width: 50vw;
+  width: calc(60vw - 4rem);
+}
+
+@media only screen and (max-width: 800px) {
+  main {
+    width: calc(100vw - 4rem);
+  }
+}
+
+@media only screen and (max-width: 1000px) and (min-width: 801px) {
+  main {
+    width: calc(75vw - 4rem);
+  }
 }
 
 
