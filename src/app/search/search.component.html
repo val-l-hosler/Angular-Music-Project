@@ -1,4 +1,4 @@
-<div id="search-form">
+<div class="form-container">
   <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
     <mat-form-field class="my-form-field" appBottomMargin appearance="fill">
       <mat-label>Enter a search term</mat-label>
@@ -13,4 +13,5 @@
             [disabled]="searchForm.get('searchTerm')?.invalid">SUBMIT
     </button>
   </form>
+
 </div>

@@ -1,0 +1,30 @@
+.center-spinner{
+  display: flex;
+  justify-content: center;
+}
+
+.cols-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+
+  .cols {
+    flex: 0 calc(33.3% - 2rem);
+    margin: 1rem;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .cols-container {
+    flex-wrap: nowrap;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 1200px) and (min-width: 651px) {
+  .cols {
+    flex: 0 calc(50% - 2rem);
+    margin: 1rem;
+  }
+}

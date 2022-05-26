@@ -1,8 +1,0 @@
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-.my-form-field .mat-form-field-wrapper {
-  margin-bottom: -1.25em;
-}
