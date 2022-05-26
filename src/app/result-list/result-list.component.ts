@@ -12,7 +12,7 @@ import {GetITunesApiService} from '../services/get-iTunes-api.service';
 export class ResultListComponent implements OnInit {
   searchTerm = '';
 
-  loading = false;
+  loading = true;
 
   resultsUIInfo?: Observable<{
     artistName: string,
@@ -24,13 +24,11 @@ export class ResultListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loading = true;
-
     this.resultsUIInfo = this.getItunesApiService.results.pipe(map(searchResults => {
         if ('results' in searchResults) {
-          const {results} = searchResults;
-
           this.loading = false;
+
+          const {results} = searchResults;
 
           return results.map(result => {
             const {artistName, artworkUrl100, collectionName} = result;
@@ -40,7 +38,7 @@ export class ResultListComponent implements OnInit {
 
         return null;
       }
-    ))
+    ));
 
     this.searchTerm = this.getItunesApiService.searchTerm.getValue();
   }

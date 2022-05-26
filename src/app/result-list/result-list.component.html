@@ -1,3 +1,7 @@
+<div *ngIf="loading">
+  <app-loading-spinner class="flex"></app-loading-spinner>
+</div>
+
 <div *ngIf="resultsUIInfo | async as results">
   <div *ngIf="results.length > 0; else noResult">
     <h2>Results for {{searchTerm}}</h2>
@@ -7,10 +11,5 @@
 </div>
 
 <ng-template #noResult>
-  <div *ngIf="loading; else notLoading">
-    <app-loading-spinner class="flex"></app-loading-spinner>
-  </div>
-  <ng-template #notLoading>
-    <h2>There are no search search results for {{searchTerm}}.</h2>
-  </ng-template>
+  <h2>There are no search search results for {{searchTerm}}.</h2>
 </ng-template>
