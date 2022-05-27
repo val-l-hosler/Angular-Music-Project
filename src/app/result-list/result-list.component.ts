@@ -28,10 +28,6 @@ export class ResultListComponent implements OnInit {
   ngOnInit() {
     this.searchTerm = this.getItunesApiService.searchTerm.getValue();
 
-    if (this.searchTerm === '') {
-      this.router.navigate(['']);
-    } // this fixes the Github pages 404 problem
-
     this.resultsUIInfo = this.getItunesApiService.results
       .pipe(
         map(searchResults => {
