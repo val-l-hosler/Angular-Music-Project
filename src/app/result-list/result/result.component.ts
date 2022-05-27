@@ -10,5 +10,6 @@ export class ResultComponent {
   @Input() artistName = '';
   @Input() artworkUrl = '';
   @Input() collectionName = '';
+  @Input() url = '';
   @Input() index = 0;
 }

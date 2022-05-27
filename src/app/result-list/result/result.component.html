@@ -1,22 +1,24 @@
-<mat-card>
-  <mat-card-title class="custom">Result {{index}}</mat-card-title>
-  <div class="spread-items">
-    <img *ngIf="artworkUrl; else noArtwork" src="{{artworkUrl}}"
-         [alt]="artistName || collectionName || index + ' search result'">
-    <ng-template #noArtwork>
-      <mat-icon>broken_image</mat-icon>
-    </ng-template>
-
-    <ul>
-      <li *ngIf="artistName; else noArtist"> {{artistName}} </li>
-      <ng-template #noArtist>
-        <li>No artist name</li>
+<a [href]="url" target="_blank">
+  <mat-card>
+    <mat-card-title class="custom">Result {{index}}</mat-card-title>
+    <div class="spread-items">
+      <img *ngIf="artworkUrl; else noArtwork" src="{{artworkUrl}}"
+           [alt]="artistName || collectionName || index + ' search result'">
+      <ng-template #noArtwork>
+        <mat-icon>broken_image</mat-icon>
       </ng-template>
 
-      <li *ngIf="collectionName; else noCollection"> {{collectionName}} </li>
-      <ng-template #noCollection>
-        <li>No collection name</li>
-      </ng-template>
-    </ul>
-  </div>
-</mat-card>
+      <ul>
+        <li *ngIf="artistName; else noArtist"> {{artistName}} </li>
+        <ng-template #noArtist>
+          <li>No artist name</li>
+        </ng-template>
+
+        <li *ngIf="collectionName; else noCollection"> {{collectionName}} </li>
+        <ng-template #noCollection>
+          <li>No collection name</li>
+        </ng-template>
+      </ul>
+    </div>
+  </mat-card>
+</a>

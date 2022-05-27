@@ -1,3 +1,9 @@
+@use '@angular/material' as mat;
+
+a {
+  text-decoration: none;
+}
+
 img {
   width: 100px;
   min-width: 100px;
@@ -13,6 +19,7 @@ ul {
 
 li {
   font-size: 1rem;
+  text-decoration: none;
 
   &:not(:last-child) {
     margin-bottom: 1rem;
@@ -32,6 +39,10 @@ li {
 
   .mat-icon {
     font-size: 100px;
+  }
+
+  &:focus, &:visited, &:hover, &:active {
+    @include mat.elevation(4);
   }
 }
 

@@ -17,7 +17,7 @@ export class ResultListComponent implements OnInit {
   error = false;
 
   resultsUIInfo?:
-    Observable<{ artistName: string; artworkUrl: string; collectionName: string; }[]
+    Observable<{ artistName: string; artworkUrl: string; collectionName: string; url: string; }[]
       | null
       | 'error'>;
 
@@ -34,8 +34,13 @@ export class ResultListComponent implements OnInit {
               const {results} = searchResults;
 
               return results.map(result => {
-                const {artistName, artworkUrl100, collectionName} = result;
-                return {artistName: artistName, artworkUrl: artworkUrl100, collectionName: collectionName};
+                const {artistName, artworkUrl100, collectionName, trackViewUrl} = result;
+                return {
+                  artistName: artistName,
+                  artworkUrl: artworkUrl100,
+                  collectionName: collectionName,
+                  url: trackViewUrl
+                };
               });
             }
 

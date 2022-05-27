@@ -4,7 +4,8 @@ import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 
 const routes: Routes = [
   {path: 'results', loadChildren: () => import('./results.module').then(m => m.ResultsModule)},
-  {path: '', loadChildren: () => import('./search.module').then(m => m.SearchModule)}
+  {path: '', loadChildren: () => import('./search.module').then(m => m.SearchModule)},
+  {path: '**', redirectTo: ''}
 ];
 
 @NgModule({

@@ -8,7 +8,7 @@
     <div class="cols-container">
       <app-result *ngFor="let result of results; let i = index;" [artistName]="result.artistName"
                   class="cols"
-                  [artworkUrl]="result.artworkUrl" [collectionName]="result.collectionName"
+                  [artworkUrl]="result.artworkUrl" [collectionName]="result.collectionName" [url]="result.url"
                   [index]="i + 1"></app-result>
     </div>
   </div>
