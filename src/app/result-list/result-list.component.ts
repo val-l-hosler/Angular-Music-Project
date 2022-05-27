@@ -3,7 +3,7 @@ import {Component, OnInit} from '@angular/core';
 import {map, Observable} from 'rxjs';
 
 import {GetITunesApiService} from '../services/get-iTunes-api.service';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-result-list',
@@ -22,7 +22,7 @@ export class ResultListComponent implements OnInit {
       | null
       | 'error'>;
 
-  constructor(private getItunesApiService: GetITunesApiService, private router: Router) {
+  constructor(private getItunesApiService: GetITunesApiService) {
   }
 
   ngOnInit() {

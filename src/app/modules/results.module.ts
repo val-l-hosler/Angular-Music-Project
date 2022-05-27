@@ -23,14 +23,14 @@ const routes: Routes = [
     LoadingSpinnerComponent,
     ResultListComponent
   ],
-    imports: [
-        RouterModule.forChild(routes),
-        CommonModule,
-        MatCardModule,
-        MatListModule,
-        MatProgressSpinnerModule,
-        MatIconModule
-    ],
+  imports: [
+    RouterModule.forChild(routes),
+    CommonModule,
+    MatCardModule,
+    MatListModule,
+    MatProgressSpinnerModule,
+    MatIconModule
+  ],
   exports: [
     RouterModule
   ]
