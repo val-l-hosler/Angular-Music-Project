@@ -17,7 +17,12 @@ export class ResultsGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-    return (this.getItunesApiService.searchTerm.getValue() !== '') ? true : this.router.parseUrl('');
+    if (this.getItunesApiService.searchTerm.getValue() !== '') {
+      this.router.navigate(['/']);
+      return false;
+    }
+
+    return true;
   }
 
 }
