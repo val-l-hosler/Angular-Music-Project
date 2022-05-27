@@ -13,7 +13,6 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {RoutingModule} from './routing.module';
 import {ResultsModule} from './results.module';
 import {SearchModule} from './search.module';
-import {DirectivesModule} from './directives.module';
 
 @NgModule({
   declarations: [
@@ -29,8 +28,7 @@ import {DirectivesModule} from './directives.module';
     RoutingModule,
     ResultsModule,
     SearchModule,
-    MatTabsModule,
-    DirectivesModule
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

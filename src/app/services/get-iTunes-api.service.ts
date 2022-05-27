@@ -10,7 +10,7 @@ import {SearchResultsInterface} from '../interfaces/search-results.interface';
   providedIn: 'root'
 })
 export class GetITunesApiService {
-  results = new Subject<SearchResultsInterface>();
+  results = new Subject<SearchResultsInterface | string>();
   searchTerm = new BehaviorSubject<string>('');
 
   constructor(private http: HttpClient) {
@@ -27,9 +27,5 @@ export class GetITunesApiService {
     const artistUrl = `https://itunes.apple.com/search?term=${finalName}`;
 
     return this.http.get<SearchResultsInterface>(artistUrl);
-  }
-
-  setResults(results: SearchResultsInterface) {
-    this.results.next(results);
   }
 }

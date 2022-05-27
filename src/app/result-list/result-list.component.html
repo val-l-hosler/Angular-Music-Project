@@ -3,16 +3,18 @@
 </div>
 
 <div *ngIf="resultsUIInfo | async as results">
-  <div *ngIf="results.length > 0; else noResult">
+  <div *ngIf="results !== 'error' && results.length > 0; else noResult">
     <h2>Results for {{searchTerm}}</h2>
     <div class="cols-container">
-      <app-result *ngFor="let result of results; let i = index;" [artistName]="result.artistName" class="cols"
+      <app-result *ngFor="let result of results; let i = index;" [artistName]="result.artistName"
+                  class="cols"
                   [artworkUrl]="result.artworkUrl" [collectionName]="result.collectionName"
                   [index]="i + 1"></app-result>
     </div>
   </div>
-</div>
 
-<ng-template #noResult>
-  <h2>There are no search search results for {{searchTerm}}.</h2>
-</ng-template>
+  <ng-template #noResult>
+    <h2 *ngIf="results === 'error' else noError">There was an error loading the data. Please make another search.</h2>
+    <ng-template #noError><h2>There are no search search results for {{searchTerm}}.</h2></ng-template>
+  </ng-template>
+</div>

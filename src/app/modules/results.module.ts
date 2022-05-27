@@ -11,7 +11,6 @@ import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
-import {DirectivesModule} from './directives.module';
 import {MatIconModule} from "@angular/material/icon";
 
 const routes: Routes = [
@@ -30,7 +29,6 @@ const routes: Routes = [
         MatCardModule,
         MatListModule,
         MatProgressSpinnerModule,
-        DirectivesModule,
         MatIconModule
     ],
   exports: [

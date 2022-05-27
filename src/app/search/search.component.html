@@ -1,6 +1,6 @@
 <div class="form-container">
   <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
-    <mat-form-field class="my-form-field" appBottomMargin appearance="fill">
+    <mat-form-field class="my-form-field" appearance="fill">
       <mat-label>Enter a search term</mat-label>
       <input matInput formControlName="searchTerm" required>
       <mat-error

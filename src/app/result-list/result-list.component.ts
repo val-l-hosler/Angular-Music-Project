@@ -14,31 +14,35 @@ export class ResultListComponent implements OnInit {
 
   loading = true;
 
-  resultsUIInfo?: Observable<{
-    artistName: string,
-    artworkUrl: string,
-    collectionName: string
-  }[] | null>;
+  error = false;
+
+  resultsUIInfo?:
+    Observable<{ artistName: string; artworkUrl: string; collectionName: string; }[]
+      | null
+      | 'error'>;
 
   constructor(private getItunesApiService: GetITunesApiService) {
   }
 
   ngOnInit() {
-    this.resultsUIInfo = this.getItunesApiService.results.pipe(map(searchResults => {
-        if ('results' in searchResults) {
-          this.loading = false;
+    this.resultsUIInfo = this.getItunesApiService.results
+      .pipe(
+        map(searchResults => {
+            this.loading = false;
 
-          const {results} = searchResults;
+            if (typeof (searchResults) === 'object' && 'results' in searchResults) {
+              const {results} = searchResults;
 
-          return results.map(result => {
-            const {artistName, artworkUrl100, collectionName} = result;
-            return {artistName: artistName, artworkUrl: artworkUrl100, collectionName: collectionName};
-          });
-        }
+              return results.map(result => {
+                const {artistName, artworkUrl100, collectionName} = result;
+                return {artistName: artistName, artworkUrl: artworkUrl100, collectionName: collectionName};
+              });
+            }
 
-        return null;
-      }
-    ));
+            return (searchResults === 'error') ? searchResults : null;
+          }
+        )
+      );
 
     this.searchTerm = this.getItunesApiService.searchTerm.getValue();
   }

@@ -9,8 +9,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 
-import {DirectivesModule} from './directives.module';
-
 const routes: Routes = [
   {path: '', component: SearchComponent}
 ];
@@ -25,8 +23,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule,
-    DirectivesModule
+    MatButtonModule
   ],
   exports: [
     RouterModule
