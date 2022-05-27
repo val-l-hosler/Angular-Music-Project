@@ -3,6 +3,7 @@ import {Component, OnInit} from '@angular/core';
 import {map, Observable} from 'rxjs';
 
 import {GetITunesApiService} from '../services/get-iTunes-api.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-result-list',
@@ -21,10 +22,16 @@ export class ResultListComponent implements OnInit {
       | null
       | 'error'>;
 
-  constructor(private getItunesApiService: GetITunesApiService) {
+  constructor(private getItunesApiService: GetITunesApiService, private router: Router) {
   }
 
   ngOnInit() {
+    this.searchTerm = this.getItunesApiService.searchTerm.getValue();
+
+    if (this.searchTerm === '') {
+      this.router.navigate(['']);
+    } // this fixes the Github pages 404 problem
+
     this.resultsUIInfo = this.getItunesApiService.results
       .pipe(
         map(searchResults => {
@@ -48,7 +55,5 @@ export class ResultListComponent implements OnInit {
           }
         )
       );
-
-    this.searchTerm = this.getItunesApiService.searchTerm.getValue();
   }
 }
